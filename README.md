@@ -11,4 +11,6 @@ Implementing a REST API using some Spring ecosystem projects such as Spring Boot
 - on terminal -> target folder -> run code 'java -jar arq-name.jar'
 
 ### API Requests example on Insomnia
-<img align="center" src="./using endpoits exemple/post simples.png" />
+<img align="center" alt="Post example" src="./using endpoits exemple/post simples.png" />
+<img align="center" alt="Multiple post example" src="./using endpoits exemple/post multiplo with zoom.png" />
+<img align="center" alt="GetByID example" src="./using endpoits exemple/get by id with zoom.png" />
