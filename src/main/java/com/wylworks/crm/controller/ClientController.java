@@ -26,9 +26,17 @@ public class ClientController {
 		return clientRepository.findAll();
 	}
 	
-	@PostMapping
+	/*
+	 	@PostMapping
+		@ResponseStatus(code = HttpStatus.CREATED)
+		public Client adicionar(@RequestBody Client cliente) { // RequestBody converte o jsonBody para um obj Java do tipo Cliente
+			return clientRepository.save(cliente);
+		}
+	*/
+	
+	@PostMapping("criarVarios")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Client adicionar(@RequestBody Client cliente) { // RequestBody converte o jsonBody para um obj Java do tipo Cliente
-		return clientRepository.save(cliente);
+	public List<Client> adicionarClientes(@RequestBody List<Client> clientes) { // RequestBody converte o jsonBody para um obj Java do tipo Cliente
+		return clientRepository.saveAll(clientes);
 	}
 }
