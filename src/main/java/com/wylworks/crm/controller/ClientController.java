@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,4 +49,18 @@ public class ClientController {
 		return clientRepository.saveAll(clientes);
 	}
 	//*/
+	
+	@DeleteMapping("/{id}")
+	public String deleteCliente(@PathVariable Long id) {
+		clientRepository.deleteById(id);
+		
+		return "Cliente excluído com sucesso!";
+	}
+	
+	@DeleteMapping()
+	public String deleteAll() {
+		clientRepository.deleteAll();
+		
+		return "Clientes excluídos com sucesso!";
+	}
 }
