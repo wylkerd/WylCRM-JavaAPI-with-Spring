@@ -1,10 +1,12 @@
 package com.wylworks.crm.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +28,12 @@ public class ClientController {
 		return clientRepository.findAll();
 	}
 	
-	/*
+	@GetMapping("GetById/{id}")
+	public Optional<Client> listarTodos(@PathVariable Long id) {
+		return clientRepository.findById(id);
+	}
+	
+	/*	// Método Post para criar um por um
 	 	@PostMapping
 		@ResponseStatus(code = HttpStatus.CREATED)
 		public Client adicionar(@RequestBody Client cliente) { // RequestBody converte o jsonBody para um obj Java do tipo Cliente
@@ -34,9 +41,11 @@ public class ClientController {
 		}
 	*/
 	
+	///*
 	@PostMapping("criarVarios")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public List<Client> adicionarClientes(@RequestBody List<Client> clientes) { // RequestBody converte o jsonBody para um obj Java do tipo Cliente
 		return clientRepository.saveAll(clientes);
 	}
+	//*/
 }
