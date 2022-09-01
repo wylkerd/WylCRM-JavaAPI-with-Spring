@@ -9,3 +9,6 @@ Implementing a REST API using some Spring ecosystem projects such as Spring Boot
 ### How to create jar and run?
 - project -> Run As -> Maven Build -> Goals (digit: 'clean package')
 - on terminal -> target folder -> run code 'java -jar arq-name.jar'
+
+### API Requests example on Insomnia
+<img align="center" src="./using endpoits exemple/post simples.png" />
