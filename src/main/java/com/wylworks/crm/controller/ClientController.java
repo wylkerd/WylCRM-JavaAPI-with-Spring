@@ -46,13 +46,14 @@ public class ClientController {
 			@RequestParam(value = "name", defaultValue = "wylkerd", required = false) String name,
 			@RequestParam(value = "id", defaultValue = "", required = false) Long id
 	) {
-		// Criando um exemplo de client com params recebidos
-		Client client = new Client();
-		client.setName(name);
-		client.setId(id);
+		// Criando um obj de Client com params recebidos utilizando Lombok @Builder
+		Client client = Client.builder()
+				.name(name)
+				.id(id)
+				.build();
 		
 		// realizando busca por meio das props opcionais
-		return clientRepository.findAll(Example.of(client));
+		return clientRepository.findAll(Example.of(client)); // Criando um exemplo de client à partir do objeto
 	}
 	
 	/*	// Método Post para criar um por um

@@ -8,10 +8,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 //import lombok.Data;  // Gerador de códigos bolierPlate
 
 
 //@Data // Gera Getters, Setters, HashCode and equals por meio do Lombok
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 public class Client {
 	
