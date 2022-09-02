@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,6 +34,25 @@ public class ClientController {
 	@GetMapping("GetById/{id}")
 	public Optional<Client> listarTodos(@PathVariable Long id) {
 		return clientRepository.findById(id);
+	}
+	
+	@GetMapping("GetByName") // GetByFilter?name=Wylkerd
+	public List<Client> findByName(@RequestParam(value = "name", defaultValue = "wylkerd") String name) {
+		return clientRepository.findByName(name);
+	}
+	
+	@GetMapping("GetByFilter") // GetByFilter?name=Wylkerd&&id=1
+	public List<Client> findByFilter(
+			@RequestParam(value = "name", defaultValue = "wylkerd", required = false) String name,
+			@RequestParam(value = "id", defaultValue = "", required = false) Long id
+	) {
+		// Criando um exemplo de client com params recebidos
+		Client client = new Client();
+		client.setName(name);
+		client.setId(id);
+		
+		// realizando busca por meio das props opcionais
+		return clientRepository.findAll(Example.of(client));
 	}
 	
 	/*	// Método Post para criar um por um

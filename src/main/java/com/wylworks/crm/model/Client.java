@@ -8,12 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-//import lombok.Data;
+//import lombok.Data;  // Gerador de códigos bolierPlate
 
-// Gera Getters, Setters, HashCode and equals
-//@Data
+
+//@Data // Gera Getters, Setters, HashCode and equals por meio do Lombok
 @Entity
 public class Client {
+	
+	// Properties
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // BD fará o incremento automático do ID
@@ -21,6 +23,8 @@ public class Client {
 	
 	@Column(nullable = false)
 	private String name;
+	
+	// Boilerplate codes
 
 	public Long getId() {
 		return id;
@@ -44,7 +48,7 @@ public class Client {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj) { // Verifica se o objeto é igual a partir do id
 		if (this == obj)
 			return true;
 		if (obj == null)
